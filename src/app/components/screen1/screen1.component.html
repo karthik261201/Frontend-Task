@@ -1,0 +1,22 @@
+<div class="container">
+    <input type="file" (change)="onImagesSelected($event)" multiple />
+
+    <div class="row mt-3">
+        <div *ngFor="let image of uploadedImages; let i = index" class="col-md-4 mb-3"
+            (mousedown)="onDragStart($event, i)" (mousemove)="onDragging($event, i)" (mouseup)="onDragEnd()"
+            (dblclick)="onZoomStart($event, i)" (click)="onTripleClick($event, i)">
+            <div class="image-container" [ngStyle]="{
+               'position': 'absolute',
+               'top.px': positions[i].y || 0,
+               'left.px': positions[i].x || 0,
+               'z-index': dragging === i ? 1000 : 1,
+               'transform': 'rotate(' + rotations[i] + 'deg) scale(' + scales[i] + ')'
+             }">
+                <img [src]="image" alt="Uploaded Image" class="img-fluid" [ngStyle]="{
+                 'width.px': sizes[i].width || 150,
+                 'height.px': sizes[i].height || 150
+               }" />
+            </div>
+        </div>
+    </div>
+</div>

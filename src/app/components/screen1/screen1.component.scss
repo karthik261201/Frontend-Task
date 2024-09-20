@@ -1,0 +1,7 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    /* Smooth transition for rotation/zoom */
+}
